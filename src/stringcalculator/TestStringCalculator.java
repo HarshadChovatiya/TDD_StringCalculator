@@ -10,13 +10,13 @@ public class TestStringCalculator {
     private static StringCalculator stringCalculator;
 
     @BeforeAll
-    static void setUpBeforeClass() throws Exception {
+    static void setUpBeforeClass() {
         stringCalculator = new StringCalculator();
     }
 
     @Test
-    void test() {
-        int output = stringCalculator.Add("1234");
+    void testEmptyString() {
+        int output = stringCalculator.Add("");
         assertEquals(0, output);
     }
 }
