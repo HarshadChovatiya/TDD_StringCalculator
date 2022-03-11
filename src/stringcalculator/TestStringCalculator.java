@@ -62,4 +62,9 @@ public class TestStringCalculator {
         assertTrue(thrown.getMessage().contains("negatives not allowed : -23,"));
     }
 
+    @Test
+    void testNumberBiggerThanThousand() {
+        int output = stringCalculator.Add("1001,2");
+        assertEquals(2, output);
+    }
 }

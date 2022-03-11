@@ -34,7 +34,9 @@ public class StringCalculator {
                     negativeNumbers += ",";
                 }
                 else {
-                    answer += temp;
+                    if(temp <= 1000) {
+                        answer += temp;
+                    }
                 }
             }
         }
