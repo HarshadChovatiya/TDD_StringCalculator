@@ -24,10 +24,23 @@ public class StringCalculator {
 
     private int calculateSum(String[] operands) {
         answer = 0;
+        String negativeNumbers = "";
+
         for(String number: operands) {
             if(!number.isEmpty()) {
-                answer += Integer.parseInt(number);
+                int temp = Integer.parseInt(number);
+                if(temp < 0) {
+                    negativeNumbers += number;
+                    negativeNumbers += ",";
+                }
+                else {
+                    answer += temp;
+                }
             }
+        }
+
+        if(!negativeNumbers.isEmpty()) {
+            throw new ArithmeticException("negatives not allowed : " + negativeNumbers);
         }
 
         return answer;

@@ -3,7 +3,7 @@ package stringcalculator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestStringCalculator {
 
@@ -55,5 +55,11 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("//;\n1;2");
         assertEquals(3, output);
     }
-    
+
+    @Test
+    void testNegativeNumbers() {
+        ArithmeticException thrown = assertThrows(ArithmeticException.class, () -> stringCalculator.Add("1,-23"));
+        assertTrue(thrown.getMessage().contains("negatives not allowed : -23,"));
+    }
+
 }
