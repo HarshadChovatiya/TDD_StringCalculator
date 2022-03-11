@@ -67,4 +67,10 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("1001,2");
         assertEquals(2, output);
     }
+
+    @Test
+    void testDelimiterOfAnyLength() {
+        int output = stringCalculator.Add("//[***]\n1***2***3");
+        assertEquals(6, output);
+    }
 }

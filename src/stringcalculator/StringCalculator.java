@@ -1,5 +1,8 @@
 package stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
 
     private int answer;
@@ -15,6 +18,30 @@ public class StringCalculator {
 
     private String getSingleDelimiterWithoutBrackets(String first_line) {
         return first_line.substring(2);
+    }
+
+    private String getDelimiterOfAnyLength(String first_line) {
+        String delimeter = "";
+        List<String> list=new ArrayList<String>();
+        for(int i=2; i<first_line.length(); i++) {
+            String temp = "";
+            temp += first_line.charAt(i);
+            int j=i+1;
+            while(j < first_line.length() && first_line.charAt(j) != ']') {
+                temp += first_line.charAt(j);
+                j++;
+            }
+            temp += "]";
+            i = j;
+            list.add(temp);
+        }
+        for(String x: list) {
+            delimeter += x;
+            delimeter += "|";
+        }
+        delimeter = delimeter.substring(0, delimeter.length()-1);
+
+        return delimeter;
     }
 
     private String[] getNumberAsStringArrayFromGivenInput(String numberString, String delimiter) {
@@ -60,6 +87,8 @@ public class StringCalculator {
 
             if(first_line.charAt(2) != '[') {
                 delimiter = getSingleDelimiterWithoutBrackets(first_line);
+            } else {
+                delimiter = getDelimiterOfAnyLength(first_line);
             }
         }
         else {
