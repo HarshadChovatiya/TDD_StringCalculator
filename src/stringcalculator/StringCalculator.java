@@ -13,6 +13,10 @@ public class StringCalculator {
         return ",|\n";
     }
 
+    private String getSingleDelimiterWithoutBrackets(String first_line) {
+        return first_line.substring(2);
+    }
+
     private String[] getNumberAsStringArrayFromGivenInput(String numberString, String delimiter) {
         String[] numbers = numberString.split(delimiter, 0);
         return numbers;
@@ -21,7 +25,9 @@ public class StringCalculator {
     private int calculateSum(String[] operands) {
         answer = 0;
         for(String number: operands) {
-            answer += Integer.parseInt(number);
+            if(!number.isEmpty()) {
+                answer += Integer.parseInt(number);
+            }
         }
 
         return answer;
@@ -33,7 +39,17 @@ public class StringCalculator {
             return 0;
         }
 
-        delimiter = getDefaultDelimiter();
+        if(numbers.startsWith("//")) {
+            String first_line = numbers.split("\n")[0];
+            numbers = numbers.split("\n")[1];
+
+            if(first_line.charAt(2) != '[') {
+                delimiter = getSingleDelimiterWithoutBrackets(first_line);
+            }
+        }
+        else {
+            delimiter = getDefaultDelimiter();
+        }
 
         String[] operands = getNumberAsStringArrayFromGivenInput(numbers, delimiter);
 

@@ -49,4 +49,11 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("5\n4,3,2\n1");
         assertEquals(15, output);
     }
+
+    @Test
+    void testSingleDelimiterWithoutBrackets() {
+        int output = stringCalculator.Add("//;\n1;2");
+        assertEquals(3, output);
+    }
+    
 }
