@@ -73,4 +73,16 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("//[***]\n1***2***3");
         assertEquals(6, output);
     }
+
+    @Test
+    void testMultipleDelimiter() {
+        int output = stringCalculator.Add("//[*][%]\n1*2%3");
+        assertEquals(6, output);
+    }
+
+    @Test
+    void testMultipleDelimiterOfAnyLength() {
+        int output = stringCalculator.Add("//[***][%%%]\n1***2%%%3");
+        assertEquals(6, output);
+    }
 }
