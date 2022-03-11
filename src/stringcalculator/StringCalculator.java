@@ -10,7 +10,7 @@ public class StringCalculator {
     }
 
     private String getDefaultDelimiter() {
-        return ",";
+        return ",|\n";
     }
 
     private String[] getNumberAsStringArrayFromGivenInput(String numberString, String delimiter) {

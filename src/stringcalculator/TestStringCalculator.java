@@ -37,4 +37,16 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("5,4,3,2,1");
         assertEquals(15, output);
     }
+
+    @Test
+    void testTwoNumbersWithNewlineAndCommaDelimiter() {
+        int output = stringCalculator.Add("1\n2");
+        assertEquals(3, output);
+    }
+
+    @Test
+    void testMultipleNumbersWithNewlineAndCommaDelimiter() {
+        int output = stringCalculator.Add("5\n4,3,2\n1");
+        assertEquals(15, output);
+    }
 }
