@@ -25,4 +25,10 @@ public class TestStringCalculator {
         int output = stringCalculator.Add("5");
         assertEquals(5, output);
     }
+
+    @Test
+    void testTwoNumbersWithDefaultDelimiter() {
+        int output = stringCalculator.Add("5,4");
+        assertEquals(9, output);
+    }
 }
