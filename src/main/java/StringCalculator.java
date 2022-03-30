@@ -1,3 +1,5 @@
+import repository.SaveLogRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,9 +7,12 @@ public class StringCalculator {
 
     private int answer;
 
+    private SaveLogRepository saveLogRepository;
+
     // constructor
-    StringCalculator() {
+    StringCalculator(SaveLogRepository saveLogRepository) {
         answer = 0;
+        this.saveLogRepository = saveLogRepository;
     }
 
     private String getDefaultDelimiter() {
@@ -74,6 +79,7 @@ public class StringCalculator {
     }
 
     public int Add(String numbers) {
+        saveLogRepository.saveLog(numbers);
         String delimiter = "";
         if(numbers.isEmpty()) {
             return 0;
